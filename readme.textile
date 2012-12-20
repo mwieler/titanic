@@ -1,0 +1,10 @@
+h1. Titanic Machine Learning Exercise
+
+This is my work (in progress) on Kaggle's introductory machine learning exercise.
+
+The task is to account for who survived the Titanic disaster on the basis of passenger demographic data & information about the ticket each passenger bought.
+
+I'm writing everything in R
+
+<h3> Important Note</h3>
+In the real world, this would not be a good question to tackle with machine learning.  Better to figure out how to prevent these disasters from occuring in the first place (use strong rivets that won't pop off in a glancing collision that rip long gashes in the hull, don't drive the boat too fast), but nevertheless prepare for the unlucky event that a disaster comes to pass (carry adequate lifeboats for everyone on board, rehearse safety procedures).
