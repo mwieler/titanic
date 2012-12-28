@@ -24,11 +24,7 @@ malesurvivors/males
 
 ###Naive Prediction Model### - wrap this in a function
 
-data<-'p'
-ind<-'sex'
-dep<-'survived'
-ind_vals<-c('male','female')
-dep_vals<-c(0,1)
+
 npred=function(data,ind,ind_vals,dep,dep_vals){
 #naive prediction model
 #given vectors ind_vals and dep_vals (the 'naive model'), this function
@@ -38,7 +34,13 @@ npred=function(data,ind,ind_vals,dep,dep_vals){
   # the first element of the list is a list showing the naive model
   # the second element is a new vector of the map from ind_vals to dep_values,
   # applied to the 'ind' field of 'data'
-# sample usage: x<-npreds(data,ind,ind_vals,dep,dep_vals)
+# sample usage: 
+  # data<-'p'
+  # ind<-'sex'
+  # dep<-'survived'
+  # ind_vals<-c('male','female')
+  # dep_vals<-c(0,1)
+  x<-npreds(data,ind,ind_vals,dep,dep_vals)
 model<-data.frame(ind=ind_vals,dep=dep_vals) #for convenience of user, not necessary
 names(model)=c(ind,dep)
 pred<-dep_vals[match(get(data)[,ind],model[,ind])]
