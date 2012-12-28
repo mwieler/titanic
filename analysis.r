@@ -23,14 +23,24 @@ males<-length(mp$survived)
 malesurvivors/males
 
 ###Naive Prediction Model### - wrap this in a function
-#arguments#
+
 data<-'p'
 ind<-'sex'
 dep<-'survived'
 ind_vals<-c('male','female')
-
-#function#
 dep_vals<-c(0,1)
+npred=function(data,ind,ind_vals,dep,dep_vals){
+#naive prediction model
+#given vectors ind_vals and dep_vals (the 'naive model'), this function
+#uses ind_vals and dep_vals
+#to map 'ind_vals' in the 'ind' field of the 'data' matrix to
+# a return a list.
+  # the first element of the list is a list showing the naive model
+  # the second element is a new vector of the map from ind_vals to dep_values,
+  # applied to the 'ind' field of 'data'
+# sample usage: x<-npreds(data,ind,ind_vals,dep,dep_vals)
 model<-data.frame(ind=ind_vals,dep=dep_vals) #for convenience of user, not necessary
 names(model)=c(ind,dep)
-pred<-dep_vals[match(get(data)[,ind],model[,ind])] #returns location of 1st vector in 2nd vector. Uses that position to index into 'survived' vector
+pred<-dep_vals[match(get(data)[,ind],model[,ind])]
+return(list(model,pred))
+}#returns location of 1st vector in 2nd vector. Uses that position to index into 'survived' vector
