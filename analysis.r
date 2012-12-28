@@ -20,3 +20,14 @@ mp<-mp[c("sex","survived")] #keep only sex & survived fields
 malesurvivors<-sum(mp$survived) #
 males<-length(mp$survived)
 malesurvivors/males
+
+###TEST###
+
+ind<-'sex'
+dep<-'survived'
+ind_vals<-c('male','female')
+dep_vals<-c(0,1)
+model<-data.frame(cbind(ind_vals,dep_vals)) #for convenience of user, not necessary
+colnames(model)[colnames(model)=="ind_vals"] <- ind
+colnames(model)[colnames(model)=="dep_vals"] <- dep
+pred<-dep_vals[match(p[,ind],model[,ind])] #returns location of 1st vector in 2nd vector. Uses that position to index into 'survived' vector
