@@ -1,7 +1,7 @@
 #R is an interpreted language
 #R 'whole-object' functions are better than iterative approaches
 setwd('/Users/matt/Dropbox/hackerschool/titanic')
-passenger_data_filename = "train.csv" #passenger data
+passenger_data_filename = "test.csv" #passenger data
 
 #input data from CSV file
 passengers <- read.table(paste(passenger_data_filename),header=TRUE,sep=",",,blank.lines.skip=TRUE)
@@ -15,8 +15,9 @@ npred=function(data,ind,ind_vals,dep,dep_vals){
     return(list(model,pred))}#returns location of 1st vector in 2nd vector.
     #Uses that position to index into 'survived' vector
 
-preds<-npred(data='passengers',ind='sex',ind_vals=c('male','female'),dep='survived',dep_vals=c(0,1))
-write.csv(preds,'preds')
+model_preds<-npred(data='passengers',ind='sex',ind_vals=c('male','female'),dep='survived',dep_vals=c(0,1))
+preds<-model_preds[2]
+write.csv(preds,'preds',row.names=FALSE)
 #npred documentation
 #given vectors ind_vals and dep_vals (the 'naive model'), this function
 #uses ind_vals and dep_vals
@@ -37,20 +38,3 @@ write.csv(preds,'preds')
 #class(p)
 
 
-#np<-p[which(p$survived == 1 & p$sex == 'female'),] #female survivors
-#BELOW IS AD-HOC ANALYSIS
-#female survivors
-p<-data
-fp<-p[which(p$sex == 'female'),] #females
-fp<-fp[c("sex","survived")] #keep only sex & survived fields
-femalesurvivors<-sum(fp$survived) #
-females<-length(fp$survived)
-femalesurvivors/females
-
-# male survivors
-p<-data
-mp<-p[which(p$sex == 'male'),] #males
-mp<-mp[c("sex","survived")] #keep only sex & survived fields
-malesurvivors<-sum(mp$survived) #
-males<-length(mp$survived)
-malesurvivors/males
